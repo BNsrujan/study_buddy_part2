@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FileUploadComponent from './components/FileUploadComponent';
 import SummaryComponent from './components/SummaryComponent';
-import KeyPointsComponent from './components/KeyPointsComponent';
+import KeyPointsComponent from './components/keyPointsComponent';
 import MCQComponent from './components/MCQComponent';
 import EvaluationComponent from './components/EvaluationComponent';
 
