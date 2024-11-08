@@ -21,7 +21,7 @@ exports.extractKeyPoints = async (text) => {
 exports.generateMCQs = async (text) => {
     const response = await openai.createCompletion({
         model: 'text-davinci-003',
-        prompt: `Create MCQs for the following text:\n\n${text}`,
+        prompt: `Create multiple choice questions for the following text:\n\n${text}`,
         max_tokens: 200,
     });
     return JSON.parse(response.choices[0].text);

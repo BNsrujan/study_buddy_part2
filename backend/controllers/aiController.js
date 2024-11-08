@@ -2,7 +2,8 @@ const aiService = require('../services/aiService');
 
 exports.summarizeText = async (req, res) => {
     try {
-        const summary = await aiService.runPythonScript('summarization', req.body.text);
+        const { text } = req.body;
+        const summary = await aiService.summarizeText(text);
         res.json({ summary });
     } catch (error) {
         res.status(500).json({ error: 'Error summarizing text' });
@@ -11,18 +12,19 @@ exports.summarizeText = async (req, res) => {
 
 exports.extractKeyPoints = async (req, res) => {
     try {
-        const keyPoints = await aiService.runPythonScript('key_points', req.body.text);
-        res.json({ keyPoints: JSON.parse(keyPoints) });
+        const { text } = req.body;
+        const keyPoints = await aiService.extractKeyPoints(text);
+        res.json({ keyPoints });
     } catch (error) {
         res.status(500).json({ error: 'Error extracting key points' });
     }
 };
 
-
 exports.generateMCQs = async (req, res) => {
     try {
-        const mcqs = await aiService.runPythonScript('mcq_generator', req.body.text);
-        res.json({ mcqs: JSON.parse(mcqs) });
+        const { text } = req.body;
+        const mcqs = await aiService.generateMCQs(text);
+        res.json({ mcqs });
     } catch (error) {
         res.status(500).json({ error: 'Error generating MCQs' });
     }
